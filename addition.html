@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addition</title>
+</head>
+<body>
+    <div id="addition-container">
+        <input id="firstInput" type="text" placeholder="Enter 1st Number">
+        <input id="secondInput" type="text" placeholder="Enter 2nd Number">
+        <button id="submitBtn">Add</button>
+        <p id="resultText">The result is = </p>
+        <h2>History</h2>
+    </div>
+    <script>
+        // 1. add onclick enevt listener
+        document.getElementById('submitBtn').addEventListener('click',function (){
+            // 2. Get user input
+            const firstInput = document.getElementById('firstInput');
+            const secondInput = document.getElementById('secondInput');
+            
+            const result = parseFloat(firstInput.value) + parseFloat(secondInput.value);
+            console.log( result);
+
+            if (isNaN(result)) {
+                alert('Please Enter a valid integer number');
+            } else {
+
+            // 3. Create result paragraph
+            const resultText = document.createElement('p');
+            resultText.innerText = `${firstInput.value} + ${secondInput.value} = ${result}`;
+            
+            // 4_1. append the result
+            const additiontContainer = document.getElementById('addition-container');
+            additiontContainer.appendChild(resultText);
+
+            // 4_2. Reult Text Update
+            const resultPara = document.getElementById('resultText');
+            resultPara.innerText = `The result is = ${result}`;
+
+            // 5. clean input box
+            firstInput.value = " ";
+            secondInput.value = " ";
+            }
+        })
+    </script>
+</body>
+</html>
